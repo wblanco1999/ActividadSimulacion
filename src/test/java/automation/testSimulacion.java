@@ -26,7 +26,14 @@ public class testSimulacion {
         driver = new ChromeDriver(co);
         driver.manage().window().maximize();
     }
-
+    
+    @Test
+    public void CP01_testTextBox() {
+        driver.get("https://demoqa.com/text-box");
+        PaginaCajaTexto page = new PaginaCajaTexto(driver);
+        page.llenarFormulario("Wilson Blanco", "wblanco@fidelitas.cr");
+        assertTrue(page.getResultName().contains("Wilson Blanco"));
+    }
     
     @After
     public void tearDown() {
