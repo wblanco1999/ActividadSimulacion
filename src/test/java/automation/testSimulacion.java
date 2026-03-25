@@ -58,6 +58,22 @@ public class testSimulacion {
         assertTrue(button.isEnabled());
     }
     
+    @Test
+    public void CP05_testGestionDeTabla() {
+        driver.get("https://demoqa.com/webtables");
+        driver.findElement(By.id("delete-record-1")).click();
+        assertTrue(driver.findElements(By.id("delete-record-1")).isEmpty());
+    }
+
+    @Test
+    public void CP06_testDoubleClick() {
+        driver.get("https://demoqa.com/buttons");
+        PaginaBotones page = new PaginaBotones(driver);
+        page.doubleClick();
+        String msg = page.getDoubleClickMessage(); 
+        assertEquals("You have done a double click", msg);
+    }
+    
     @After
     public void tearDown() {
         if (driver != null) {
