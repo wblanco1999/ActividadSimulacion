@@ -43,6 +43,21 @@ public class testSimulacion {
         assertTrue(page.getResult().contains("home"));
     }
     
+    @Test
+    public void CP03_testRadioButton() {
+        driver.get("https://demoqa.com/radio-button");
+        driver.findElement(By.cssSelector("label[for='yesRadio']")).click();
+        assertEquals("Yes", driver.findElement(By.className("text-success")).getText());
+    }
+
+    @Test
+    public void CP04_testEsperaDinamica() {
+        driver.get("https://demoqa.com/dynamic-properties");
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(6));
+        WebElement button = wait.until(ExpectedConditions.elementToBeClickable(By.id("enableAfter")));
+        assertTrue(button.isEnabled());
+    }
+    
     @After
     public void tearDown() {
         if (driver != null) {
