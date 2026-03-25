@@ -26,13 +26,21 @@ public class testSimulacion {
         driver = new ChromeDriver(co);
         driver.manage().window().maximize();
     }
-    
+
     @Test
-    public void CP01_testTextBox() {
+    public void CP01_registroDeTexto() {
         driver.get("https://demoqa.com/text-box");
         PaginaCajaTexto page = new PaginaCajaTexto(driver);
         page.llenarFormulario("Wilson Blanco", "wblanco@fidelitas.cr");
         assertTrue(page.getResultName().contains("Wilson Blanco"));
+    }
+
+    @Test
+    public void CP02_testCheckbox() {
+        driver.get("https://demoqa.com/checkbox");
+        PaginaCuadro page = new PaginaCuadro(driver);
+        page.clickHome();
+        assertTrue(page.getResult().contains("home"));
     }
     
     @After
